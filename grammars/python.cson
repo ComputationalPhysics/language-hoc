@@ -1,0 +1,1535 @@
+'scopeName': 'source.hoc'
+'name': 'Hoc'
+'fileTypes': [
+  'hoc'
+]
+'patterns': [
+  {
+    'captures':
+      '1':
+        'name': 'meta.toc-list.banner.line.hoc'
+    'match': '^// =(\\s*.*?)\\s*=\\s*$\\n?'
+    'name': 'comment.line.banner.hoc'
+  }
+  {
+        'captures':
+          '1':
+            'name': 'meta.toc-list.banner.block.c'
+        'match': '^/\\* =(\\s*.*?)\\s*= \\*/$\\n?'
+        'name': 'comment.block.hoc'
+      }
+      {
+        'begin': '/\\*'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.begin.hoc'
+        'end': '\\*/'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.end.hoc'
+        'name': 'comment.block.hoc'
+      }
+      {
+        'match': '\\*/.*\\n'
+        'name': 'invalid.illegal.stray-comment-end.c'
+      }
+      {
+        'captures':
+          '1':
+            'name': 'meta.toc-list.banner.line.c'
+        'match': '^// =(\\s*.*?)\\s*=\\s*$\\n?'
+        'name': 'comment.line.banner.hoc'
+      }
+  {
+    'begin': '(^[ \\t]+)?(?=//)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.whitespace.comment.leading.hoc'
+    'end': '(?!\\G)'
+    'patterns': [
+      {
+        'begin': '//'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.hoc'
+        'end': '\\n'
+        'name': 'comment.line.double-slash.hoc'
+        'patterns': [
+          {
+            'match': '(?>\\\\\\s*\\n)'
+            'name': 'punctuation.separator.continuation.hoc'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'match': '\\b(?i:(0x\\h*)L)'
+    'name': 'constant.numeric.integer.long.hexadecimal.hoc'
+  }
+  {
+    'match': '\\b(?i:(0x\\h*))'
+    'name': 'constant.numeric.integer.hexadecimal.hoc'
+  }
+  {
+    'match': '\\b(?i:(0o?[0-7]+)L)'
+    'name': 'constant.numeric.integer.long.octal.hoc'
+  }
+  {
+    'match': '\\b(?i:(0o?[0-7]+))'
+    'name': 'constant.numeric.integer.octal.hoc'
+  }
+  {
+    'match': '\\b(?i:(0b[01]+)L)',
+    'name': 'constant.numeric.integer.long.binary.hoc'
+  }
+  {
+    'match': '\\b(?i:(0b[01]+))',
+    'name': 'constant.numeric.integer.binary.hoc'
+  }
+  {
+    'match': '\\b(?i:(((\\d+(\\.(?=[^a-zA-Z_])\\d*)?|(?<=[^0-9a-zA-Z_])\\.\\d+)(e[\\-\\+]?\\d+)?))J)'
+    'name': 'constant.numeric.complex.hoc'
+  }
+  {
+    'match': '\\b(?i:(\\d+\\.\\d*(e[\\-\\+]?\\d+)?))(?=[^a-zA-Z_])'
+    'name': 'constant.numeric.float.hoc'
+  }
+  {
+    'match': '(?<=[^0-9a-zA-Z_])(?i:(\\.\\d+(e[\\-\\+]?\\d+)?))'
+    'name': 'constant.numeric.float.hoc'
+  }
+  {
+    'match': '\\b(?i:(\\d+e[\\-\\+]?\\d+))'
+    'name': 'constant.numeric.float.hoc'
+  }
+  {
+    'match': '\\b(?i:([1-9]+[0-9]*|0)L)'
+    'name': 'constant.numeric.integer.long.decimal.hoc'
+  }
+  {
+    'match': '\\b([1-9]+[0-9]*|0)'
+    'name': 'constant.numeric.integer.decimal.hoc'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'storage.modifier.global.hoc'
+    'match': '\\b(global)\\b'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'storage.modifier.nonlocal.hoc'
+    'match': '\\b(nonlocal)\\b'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.import.hoc'
+      '2':
+        'name': 'keyword.control.import.from.hoc'
+    'match': '\\b(?:(import)|(from))\\b'
+  }
+  {
+    'comment': 'keywords that delimit flow conditionals'
+    'name': 'keyword.control.conditional.hoc'
+    'match': '\\b(if|elif|else)\\b'
+  }
+  {
+    'comment': 'keywords that delimit an exception'
+    'name': 'keyword.control.exception.hoc'
+    'match': '\\b(except|finally|try|raise)\\b'
+  }
+  {
+    'comment': 'keywords that delimit loops'
+    'name': 'keyword.control.repeat.hoc'
+    'match': '\\b(for|forsec|forall|while)\\b'
+  }
+  {
+    'comment': 'keywords that alter flow from within a block'
+    'name': 'keyword.control.statement.hoc'
+    'match': '\\b(with|break|continue|pass|return|yield)\\b'
+  }
+  {
+    'comment': 'keyword operators that evaluate to True or False'
+    'match': '\\b(and|in|is|not|or)\\b'
+    'name': 'keyword.operator.logical.hoc'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.other.hoc'
+    'comment': 'keywords that haven\'t fit into other groups (yet).'
+    'match': '\\b(insert|access|objref)\\b'
+  }
+  {
+    'match': '<>'
+    'name': 'invalid.deprecated.operator.hoc'
+  }
+  {
+    'match': '<\\=|>\\=|\\=\\=|<|>|\\!\\='
+    'name': 'keyword.operator.comparison.hoc'
+  }
+  {
+    'match': '\\+\\=|-\\=|\\*\\=|/\\=|//\\=|%\\=|&\\=|\\|\\=|\\^\\=|>>\\=|<<\\=|\\*\\*\\='
+    'name': 'keyword.operator.assignment.augmented.hoc'
+  }
+  {
+    'match': '\\+|\\-|\\*|\\*\\*|/|//|%|<<|>>|&|\\||\\^|~'
+    'name': 'keyword.operator.arithmetic.hoc'
+  }
+  {
+    'match': '\\='
+    'name': 'keyword.operator.assignment.hoc'
+  }
+  {
+    'begin': '^\\s*(proc|func)\\s+(?=[A-Za-z_][A-Za-z0-9_]*\\s*\\()'
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.function.hoc'
+    'end': '(\\))\\s*(?:(\\{)|(.*$\\n?))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.parameters.end.hoc'
+      '2':
+        'name': 'punctuation.section.function.begin.hoc'
+      '3':
+        'name': 'invalid.illegal.missing-section-begin.hoc'
+    'name': 'meta.function.hoc'
+    'patterns': [
+      {
+        'begin': '(?=[A-Za-z_][A-Za-z0-9_]*)'
+        'contentName': 'entity.name.function.hoc'
+        'end': '(?![A-Za-z0-9_])'
+        'patterns': [
+          {
+            'include': '#entity_name_function'
+          }
+        ]
+      }
+      {
+        'begin': '(\\()'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.parameters.begin.hoc'
+        'contentName': 'meta.function.parameters.hoc'
+        'end': '(?=\\)\\s*\\{)'
+        'patterns': [
+          {
+            'include': '#keyword_arguments'
+          }
+          {
+            'captures':
+              '1':
+                'name': 'variable.parameter.function.hoc'
+              '2':
+                'name': 'punctuation.separator.parameters.hoc'
+            'match': '\\b([a-zA-Z_][a-zA-Z_0-9]*)\\s*(?:(,)|(?=[\\n\\)]))'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'begin': '^\\s*(proc|func)\\s+(?=[A-Za-z_][A-Za-z0-9_]*)'
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.function.hoc'
+    'end': '(\\()|\\s*($\\n?|#.*$\\n?)'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.parameters.begin.hoc'
+      '2':
+        'name': 'invalid.illegal.missing-parameters.hoc'
+    'name': 'meta.function.hoc'
+    'patterns': [
+      {
+        'begin': '(?=[A-Za-z_][A-Za-z0-9_]*)'
+        'contentName': 'entity.name.function.hoc'
+        'end': '(?![A-Za-z0-9_])'
+        'patterns': [
+          {
+            'include': '#entity_name_function'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'begin': '(lambda)(?=\\s+)'
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.function.inline.hoc'
+    'end': '(\\:)'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.parameters.end.hoc'
+      '2':
+        'name': 'punctuation.section.function.begin.hoc'
+      '3':
+        'name': 'invalid.illegal.missing-section-begin.hoc'
+    'name': 'meta.function.inline.hoc'
+    'patterns': [
+      {
+        'begin': '\\s+'
+        'contentName': 'meta.function.inline.parameters.hoc'
+        'end': '(?=\\:)'
+        'patterns': [
+          {
+            'include': '#keyword_arguments'
+          }
+          {
+            'captures':
+              '1':
+                'name': 'variable.parameter.function.hoc'
+              '2':
+                'name': 'punctuation.separator.parameters.hoc'
+            'match': '\\b([a-zA-Z_][a-zA-Z_0-9]*)\\s*(?:(,)|(?=[\\n\\)\\:]))'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'begin': '^\\s*(?=@\\s*[A-Za-z_][A-Za-z0-9_]*(?:\\.[a-zA-Z_][a-zA-Z_0-9]*)*\\s*\\()'
+    'comment': 'a decorator may be a function call which returns a decorator.'
+    'end': '(\\))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.arguments.end.hoc'
+    'name': 'meta.function.decorator.hoc'
+    'patterns': [
+      {
+        'begin': '(?=(@)\\s*[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*\\s*\\()'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.decorator.hoc'
+        'contentName': 'entity.name.function.decorator.hoc'
+        'end': '(?=\\s*\\()'
+        'patterns': [
+          {
+            'include': '#dotted_name'
+          }
+        ]
+      }
+      {
+        'begin': '(\\()'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.arguments.begin.hoc'
+        'contentName': 'meta.function.decorator.arguments.hoc'
+        'end': '(?=\\))'
+        'patterns': [
+          {
+            'include': '#keyword_arguments'
+          }
+          {
+            'include': '$self'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'begin': '^\\s*(?=@\\s*[A-Za-z_][A-Za-z0-9_]*(?:\\.[a-zA-Z_][a-zA-Z_0-9]*)*)'
+    'contentName': 'entity.name.function.decorator.hoc'
+    'end': '(?=\\s|$\\n?|#)'
+    'name': 'meta.function.decorator.hoc'
+    'patterns': [
+      {
+        'begin': '(?=(@)\\s*[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*)*)'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.decorator.hoc'
+        'end': '(?=\\s|$\\n?|#)'
+        'patterns': [
+          {
+            'include': '#dotted_name'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'begin': '(?<=\\)|\\])\\s*(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.arguments.begin.hoc'
+    'contentName': 'meta.function-call.arguments.hoc'
+    'end': '(\\))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.arguments.end.hoc'
+    'name': 'meta.function-call.hoc'
+    'patterns': [
+      {
+        'include': '#keyword_arguments'
+      }
+      {
+        'include': '$self'
+      }
+    ]
+  }
+  {
+    'begin': '(?=[A-Za-z_][A-Za-z0-9_]*(?:\\.[a-zA-Z_][a-zA-Z_0-9]*)*\\s*\\()'
+    'end': '(\\))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.arguments.end.hoc'
+    'name': 'meta.function-call.hoc'
+    'patterns': [
+      {
+        'begin': '(?=[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*\\s*\\()'
+        'end': '(?=\\s*\\()'
+        'patterns': [
+          {
+            'include': '#dotted_name'
+          }
+        ]
+      }
+      {
+        'begin': '(\\()'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.arguments.begin.hoc'
+        'contentName': 'meta.function-call.arguments.hoc'
+        'end': '(?=\\))'
+        'patterns': [
+          {
+            'include': '#keyword_arguments'
+          }
+          {
+            'include': '$self'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'begin': '(?=[A-Za-z_][A-Za-z0-9_]*(?:\\.[a-zA-Z_][a-zA-Z_0-9]*)*\\s*\\[)'
+    'end': '(\\])'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.arguments.end.hoc'
+    'name': 'meta.item-access.hoc'
+    'patterns': [
+      {
+        'begin': '(?=[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*\\s*\\[)'
+        'end': '(?=\\s*\\[)'
+        'patterns': [
+          {
+            'include': '#dotted_name'
+          }
+        ]
+      }
+      {
+        'begin': '(\\[)'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.arguments.begin.hoc'
+        'contentName': 'meta.item-access.arguments.hoc'
+        'end': '(?=\\])'
+        'patterns': [
+          {
+            'include': '$self'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'begin': '(?<=\\)|\\])\\s+(\\[)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.arguments.begin.hoc'
+    'contentName': 'meta.item-access.arguments.hoc'
+    'end': '(\\])'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.arguments.end.hoc'
+    'name': 'meta.item-access.hoc'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  }
+  {
+    'captures':
+      '1':
+        'name': 'storage.type.function.hoc'
+    'match': '\\b(def|lambda)\\b'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'storage.type.class.hoc'
+    'match': '\\b(class)\\b'
+  }
+  {
+    'include': '#line_continuation'
+  }
+  {
+    'match': '\\b(None|True|False|Ellipsis|NotImplemented)\\b'
+    'name': 'constant.language.hoc'
+  }
+  {
+    'include': '#string_quoted_single'
+  }
+  {
+    'include': '#string_quoted_double'
+  }
+  {
+    'include': '#dotted_name'
+  }
+  {
+    'include': '#language_variables'
+  }
+  {
+    'begin': '(\\()'
+    'end': '(\\))'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  }
+  {
+    'captures':
+      '1':
+        'name': 'punctuation.definition.list.begin.hoc'
+      '2':
+        'name': 'meta.empty-list.hoc'
+      '3':
+        'name': 'punctuation.definition.list.end.hoc'
+    'match': '(\\[)(\\s*(\\]))\\b'
+  }
+  {
+    'begin': '(\\[)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.list.begin.hoc'
+    'end': '(\\])'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.list.end.hoc'
+    'name': 'meta.structure.list.hoc'
+    'patterns': [
+      {
+        'begin': '(?<=\\[|\\,)\\s*(?![\\],])'
+        'contentName': 'meta.structure.list.item.hoc'
+        'end': '\\s*(?:(,)|(?=\\]))'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.separator.list.hoc'
+        'patterns': [
+          {
+            'include': '$self'
+          }
+        ]
+      }
+    ]
+  }
+  {
+    'captures':
+      '1':
+        'name': 'punctuation.definition.tuple.begin.hoc'
+      '2':
+        'name': 'meta.empty-tuple.hoc'
+      '3':
+        'name': 'punctuation.definition.tuple.end.hoc'
+    'match': '(\\()(\\s*(\\)))'
+    'name': 'meta.structure.tuple.hoc'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'punctuation.definition.dictionary.begin.hoc'
+      '2':
+        'name': 'meta.empty-dictionary.hoc'
+      '3':
+        'name': 'punctuation.definition.dictionary.end.hoc'
+    'match': '(\\{)(\\s*(\\}))'
+    'name': 'meta.structure.dictionary.hoc'
+  }
+  {
+    'begin': '(\\{)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.dictionary.begin.hoc'
+    'end': '(\\})'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.dictionary.end.hoc'
+    'name': 'meta.structure.dictionary.hoc'
+    'patterns': [
+      {
+        'begin': '(?<=\\{|\\,|^)\\s*(?![\\},])'
+        'contentName': 'meta.structure.dictionary.key.hoc'
+        'end': '\\s*(?:(?=\\})|(\\:))'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.separator.valuepair.dictionary.hoc'
+        'patterns': [
+          {
+            'include': '$self'
+          }
+        ]
+      }
+      {
+        'begin': '(?<=\\:|^)\\s*'
+        'contentName': 'meta.structure.dictionary.value.hoc'
+        'end': '\\s*(?:(?=\\})|(,))'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.separator.dictionary.hoc'
+        'patterns': [
+          {
+            'include': '$self'
+          }
+        ]
+      }
+    ]
+  }
+]
+'repository':
+  'builtin_exceptions':
+    'match': '(?x)\\b(\n\t\t\t\t(\n\t\t\t\t\tArithmetic|Assertion|Attribute|BlockingIO|BrokenPipe|Buffer|ChildProcess|\n\t\t\t\t\tConnection(Aborted|Refused|Reset)?|EOF|Environment|FileExists|\n\t\t\t\t\tFileNotFound|FloatingPoint|Interrupted|IO|IsADirectoryError|\n\t\t\t\t\tImport|Indentation|Index|Key|Lookup|Memory|Name|NotADirectory|\n\t\t\t\t\tNotImplemented|OS|Overflow|Permission|ProcessLookup|Reference|\n\t\t\t\t\tRuntime|Standard|Syntax|System|Tab|Timeout|Type|UnboundLocal|\n\t\t\t\t\tUnicode(Encode|Decode|Translate)?|Value|VMS|Windows|ZeroDivision\n\t\t\t\t)Error|\n\t\t\t\t((Pending)?Deprecation|Runtime|Syntax|User|Future|Import|Unicode|Bytes)?Warning|\n\t\t\t\t(Base)?Exception|\n\t\t\t\tSystemExit|StopIteration|NotImplemented|KeyboardInterrupt|GeneratorExit\n\t\t\t)\\b'
+    'name': 'support.type.exception.hoc'
+  'builtin_functions':
+    'match': '(?x)\\b(__import__|abs|all|any|ascii|bin|bool|bytearray|bytes|callable|chr|classmethod|compile|complex|delattr|dict|dir|divmod|enumerate|eval|exec|filter|float|format|frozenset|getattr|globals|hasattr|hash|help|hex|id|input|int|isinstance|issubclass|iter|len|list|locals|map|max|memoryview|min|next|object|oct|open|ord|pow|print|property|range|repr|reversed|round|set|setattr|slice|sorted|staticmethod|str|sum|super|tuple|type|vars|zip|file|long|raw_input|reduce|reload|unichr|unicode|xrange|apply|buffer|coerce|intern)\\b'
+    'name': 'support.function.builtin.hoc'
+  'builtin_types':
+    'match': '(?x)\\b(\n\t\t\t\tbasestring|bool|buffer|bytearray|bytes|complex|dict|float|frozenset|int|\n\t\t\t\tlist|long|memoryview|object|range|set|slice|str|tuple|unicode|xrange\n\t\t\t)\\b'
+    'name': 'support.type.hoc'
+  'constant_placeholder':
+    'match': '(?i:(%(\\([a-z_]+\\))?#?0?\\-?[ ]?\\+?([0-9]*|\\*)(\\.([0-9]*|\\*))?([hL][a-z]|[a-z%]))|(\\{([!\\[\\].:\\w ]+)?\\}))'
+    'name': 'constant.other.placeholder.hoc'
+  'docstrings':
+    'patterns': [
+      {
+        'begin': '^\\s*(?=[uU]?[rR]?""")'
+        'end': '(?<=""")'
+        'name': 'comment.block.hoc'
+        'patterns': [
+          {
+            'include': '#string_quoted_double'
+          }
+        ]
+      }
+      {
+        'begin': '^\\s*(?=[uU]?[rR]?\'\'\')'
+        'end': '(?<=\'\'\')'
+        'name': 'comment.block.hoc'
+        'patterns': [
+          {
+            'include': '#string_quoted_single'
+          }
+        ]
+      }
+    ]
+  'dotted_name':
+    'begin': '(?=[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*)'
+    'end': '(?![A-Za-z0-9_\\.])'
+    'patterns': [
+      {
+        'begin': '(\\.)(?=[A-Za-z_][A-Za-z0-9_]*)'
+        'end': '(?![A-Za-z0-9_])'
+        'patterns': [
+          {
+            'include': '#magic_function_names'
+          }
+          {
+            'include': '#magic_variable_names'
+          }
+          {
+            'include': '#illegal_names'
+          }
+          {
+            'include': '#generic_names'
+          }
+        ]
+      }
+      {
+        'begin': '(?<!\\.)(?=[A-Za-z_][A-Za-z0-9_]*)'
+        'end': '(?![A-Za-z0-9_])'
+        'patterns': [
+          {
+            'include': '#builtin_functions'
+          }
+          {
+            'include': '#builtin_types'
+          }
+          {
+            'include': '#builtin_exceptions'
+          }
+          {
+            'include': '#illegal_names'
+          }
+          {
+            'include': '#magic_function_names'
+          }
+          {
+            'include': '#magic_variable_names'
+          }
+          {
+            'include': '#language_variables'
+          }
+          {
+            'include': '#generic_names'
+          }
+        ]
+      }
+    ]
+  'entity_name_class':
+    'patterns': [
+      {
+        'include': '#illegal_names'
+      }
+      {
+        'include': '#generic_names'
+      }
+    ]
+  'entity_name_function':
+    'patterns': [
+      {
+        'include': '#magic_function_names'
+      }
+      {
+        'include': '#illegal_names'
+      }
+      {
+        'include': '#generic_names'
+      }
+    ]
+  'escaped_char':
+    'captures':
+      '1':
+        'name': 'constant.character.escape.hex.hoc'
+      '2':
+        'name': 'constant.character.escape.octal.hoc'
+      '3':
+        'name': 'constant.character.escape.newline.hoc'
+      '4':
+        'name': 'constant.character.escape.backlash.hoc'
+      '5':
+        'name': 'constant.character.escape.double-quote.hoc'
+      '6':
+        'name': 'constant.character.escape.single-quote.hoc'
+      '7':
+        'name': 'constant.character.escape.bell.hoc'
+      '8':
+        'name': 'constant.character.escape.backspace.hoc'
+      '9':
+        'name': 'constant.character.escape.formfeed.hoc'
+      '10':
+        'name': 'constant.character.escape.linefeed.hoc'
+      '11':
+        'name': 'constant.character.escape.return.hoc'
+      '12':
+        'name': 'constant.character.escape.tab.hoc'
+      '13':
+        'name': 'constant.character.escape.vertical-tab.hoc'
+    'match': '(\\\\x[0-9A-F]{2})|(\\\\[0-7]{3})|(\\\\\\n)|(\\\\\\\\)|(\\\\\\")|(\\\\\')|(\\\\a)|(\\\\b)|(\\\\f)|(\\\\n)|(\\\\r)|(\\\\t)|(\\\\v)'
+  'escaped_unicode_char':
+    'captures':
+      '1':
+        'name': 'constant.character.escape.unicode.16-bit-hex.hoc'
+      '2':
+        'name': 'constant.character.escape.unicode.32-bit-hex.hoc'
+      '3':
+        'name': 'constant.character.escape.unicode.name.hoc'
+    'match': '(\\\\U[0-9A-Fa-f]{8})|(\\\\u[0-9A-Fa-f]{4})|(\\\\N\\{[a-zA-Z ]+\\})'
+  'function_name':
+    'patterns': [
+      {
+        'include': '#magic_function_names'
+      }
+      {
+        'include': '#magic_variable_names'
+      }
+      {
+        'include': '#builtin_exceptions'
+      }
+      {
+        'include': '#builtin_functions'
+      }
+      {
+        'include': '#builtin_types'
+      }
+      {
+        'include': '#generic_names'
+      }
+    ]
+  'generic_names':
+    'match': '[A-Za-z_][A-Za-z0-9_]*'
+  'illegal_names':
+    'match': '\\b(and|as|assert|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|nonlocal|not|or|pass|print|raise|return|try|while|with|yield)\\b'
+    'name': 'invalid.illegal.name.hoc'
+  'keyword_arguments':
+    'begin': '\\b([a-zA-Z_][a-zA-Z_0-9]*)\\s*(=)(?!=)'
+    'beginCaptures':
+      '1':
+        'name': 'variable.parameter.function.hoc'
+      '2':
+        'name': 'keyword.operator.assignment.hoc'
+    'end': '\\s*(?:(,)|(?=$\\n?|[\\)\\:]))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.separator.parameters.hoc'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'language_variables':
+    'match': '\\b(self|cls)\\b'
+    'name': 'variable.language.hoc'
+  'line_continuation':
+    'captures':
+      '1':
+        'name': 'punctuation.separator.continuation.line.hoc'
+      '2':
+        'name': 'invalid.illegal.unexpected-text.hoc'
+    'match': '(\\\\)(.*)$\\n?'
+  'magic_function_names':
+    'comment': 'these methods have magic interpretation by hoc and are generally called indirectly through syntactic constructs'
+    'match': '(?x)\\b(__(?:abs|add|and|bool|bytes|call|cmp|coerce|complex|contains|del|delattr|delete|delitem|delslice|dir|div|divmod|enter|eq|exit|float|floordiv|format|ge|get|getattr|getattribute|getitem|getslice|gt|hash|hex|iadd|iand|idiv|ifloordiv|ilshift|imatmul|imod|imul|index|init|instancecheck|int|invert|ior|ipow|irshift|isub|iter|itruediv|ixor|le|len|length_hint|long|lshift|lt|matmul|missing|mod|mul|ne|neg|next|new|nonzero|oct|or|pos|pow|radd|rand|rdiv|rdivmod|repr|reversed|rfloordiv|rlshift|rmatmul|rmod|rmul|ror|round|rpow|rrshift|rshift|rsub|rtruediv|rxor|set|setattr|setitem|setslice|str|sub|subclasscheck|truediv|unicode|xor)__)\\b'
+    'name': 'support.function.magic.hoc'
+  'magic_variable_names':
+    'comment': 'magic variables which a class/module may have.'
+    'match': '\\b__(all|annotations|bases|class|closure|code|debug|dict|doc|file|func|globals|kwdefaults|members|metaclass|methods|module|name|qualname|self|slots|weakref)__\\b'
+    'name': 'support.variable.magic.hoc'
+  'regular_expressions':
+    'comment': 'Changed disabled to 1 to turn off syntax highlighting in “r” strings.'
+    'disabled': 0
+    'patterns': [
+      {
+        'include': 'source.regexp.hoc'
+      }
+    ]
+  'string_quoted_double':
+    'patterns': [
+      {
+        'begin': '([uU]r)(""")'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted unicode-raw string'
+        'end': '((?<=""")(")""|""")'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+        'name': 'string.quoted.double.block.unicode-raw-regex.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_unicode_char'
+          }
+          {
+            'include': '#escaped_char'
+          }
+          {
+            'include': '#regular_expressions'
+          }
+        ]
+      }
+      {
+        'begin': '([uU]R)(""")'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted unicode-raw string without regular expression highlighting'
+        'end': '((?<=""")(")""|""")'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+        'name': 'string.quoted.double.block.unicode-raw.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_unicode_char'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'begin': '(r)(""")'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'double quoted raw string'
+        'end': '((?<=""")(")""|""")'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+        'name': 'string.quoted.double.block.raw-regex.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+          {
+            'include': '#regular_expressions'
+          }
+        ]
+      }
+      {
+        'begin': '(R)(""")'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'double quoted raw string'
+        'end': '((?<=""")(")""|""")'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+        'name': 'string.quoted.double.block.raw.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'begin': '([uU])(""")'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'double quoted unicode string'
+        'end': '((?<=""")(")""|""")'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+        'name': 'string.quoted.double.block.unicode.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_unicode_char'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'captures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+          '3':
+            'patterns': [
+              {'include': '#constant_placeholder'}
+              {'include': '#escaped_unicode_char'}
+              {'include': '#escaped_char'}
+              {'include': '#regular_expressions'}
+            ]
+          '4':
+            'name': 'punctuation.definition.string.end.hoc'
+        'comment': 'double-quoted raw string'
+        'match': '([uU]r)(")((?:[^"\\\\]|\\\\.)*)(")'
+        'name': 'string.quoted.double.single-line.unicode-raw-regex.hoc'
+      }
+      {
+        'begin': '([uU]R)(")'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'double-quoted raw string'
+        'end': '((?<=")(")|")|(\\n)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+          '3':
+            'name': 'invalid.illegal.unclosed-string.hoc'
+        'name': 'string.quoted.double.single-line.unicode-raw.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_unicode_char'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'captures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+          '3':
+            'patterns': [
+              {'include': '#constant_placeholder'}
+              {'include': '#escaped_char'}
+              {'include': '#regular_expressions'}
+            ]
+          '4':
+            'name': 'punctuation.definition.string.end.hoc'
+        'comment': 'double-quoted raw string'
+        'match': '(r)(")((?:[^"\\\\]|\\\\.)*)(")'
+        'name': 'string.quoted.double.single-line.raw-regex.hoc'
+      }
+      {
+        'begin': '(R)(")'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'double-quoted raw string'
+        'end': '((?<=")(")|")|(\\n)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+          '3':
+            'name': 'invalid.illegal.unclosed-string.hoc'
+        'name': 'string.quoted.double.single-line.raw.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'begin': '([uU])(")'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'double quoted unicode string'
+        'end': '((?<=")(")|")|(\\n)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+          '3':
+            'name': 'invalid.illegal.unclosed-string.hoc'
+        'name': 'string.quoted.double.single-line.unicode.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_unicode_char'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'begin': '(""")(?=\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER))'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'double quoted string'
+        'end': '((?<=""")(")""|""")'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+        'name': 'string.quoted.double.block.sql.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+          {
+            'include': 'source.sql'
+          }
+        ]
+      }
+      {
+        'begin': '(")(?=\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER))'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'double quoted string'
+        'end': '((?<=")(")|")|(\\n)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+          '3':
+            'name': 'invalid.illegal.unclosed-string.hoc'
+        'name': 'string.quoted.double.single-line.sql.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+          {
+            'include': 'source.sql'
+          }
+        ]
+      }
+      {
+        'begin': '(""")'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'double quoted string'
+        'end': '((?<=""")(")""|""")'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+        'name': 'string.quoted.double.block.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'begin': '(")'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'double quoted string'
+        'end': '((?<=")(")|")|(\\n)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.double.hoc'
+          '3':
+            'name': 'invalid.illegal.unclosed-string.hoc'
+        'name': 'string.quoted.double.single-line.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+    ]
+  'string_quoted_single':
+    'patterns': [
+      {
+        'captures':
+          '1':
+            'name': 'punctuation.definition.string.begin.hoc'
+          '2':
+            'name': 'punctuation.definition.string.end.hoc'
+          '3':
+            'name': 'meta.empty-string.single.hoc'
+        'match': '(?<!\')(\')((\'))(?!\')'
+        'name': 'string.quoted.single.single-line.hoc'
+      }
+      {
+        'begin': '([uU]r)(\'\'\')'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted unicode-raw string'
+        'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.single.hoc'
+        'name': 'string.quoted.single.block.unicode-raw-regex.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_unicode_char'
+          }
+          {
+            'include': '#escaped_char'
+          }
+          {
+            'include': '#regular_expressions'
+          }
+        ]
+      }
+      {
+        'begin': '([uU]R)(\'\'\')'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted unicode-raw string'
+        'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.single.hoc'
+        'name': 'string.quoted.single.block.unicode-raw.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_unicode_char'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'begin': '(r)(\'\'\')'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted raw string'
+        'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.single.hoc'
+        'name': 'string.quoted.single.block.raw-regex.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+          {
+            'include': '#regular_expressions'
+          }
+        ]
+      }
+      {
+        'begin': '(R)(\'\'\')'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted raw string'
+        'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.single.hoc'
+        'name': 'string.quoted.single.block.raw.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'begin': '([uU])(\'\'\')'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted unicode string'
+        'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.single.hoc'
+        'name': 'string.quoted.single.block.unicode.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_unicode_char'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'captures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+          '3':
+            'patterns': [
+              {'include': '#constant_placeholder'}
+              {'include': '#escaped_unicode_char'}
+              {'include': '#escaped_char'}
+              {'include': '#regular_expressions'}
+            ]
+          '4':
+            'name': 'punctuation.definition.string.end.hoc'
+        'comment': 'single quoted raw string'
+        'match': '([uU]r)(\')((?:[^\'\\\\]|\\\\.)*)(\')'
+        'name': 'string.quoted.single.single-line.unicode-raw-regex.hoc'
+      }
+      {
+        'begin': '([uU]R)(\')'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted raw string'
+        'end': '(\')|(\\n)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'invalid.illegal.unclosed-string.hoc'
+        'name': 'string.quoted.single.single-line.unicode-raw.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_unicode_char'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'captures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+          '3':
+            'patterns': [
+              {'include': '#constant_placeholder'}
+              {'include': '#escaped_char'}
+              {'include': '#regular_expressions'}
+            ]
+          '4':
+            'name': 'punctuation.definition.string.end.hoc'
+        'comment': 'single quoted raw string'
+        'match': '(r)(\')((?:[^\'\\\\]|\\\\.)*)(\')'
+        'name': 'string.quoted.single.single-line.raw-regex.hoc'
+      }
+      {
+        'begin': '(R)(\')'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted raw string'
+        'end': '(\')|(\\n)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'invalid.illegal.unclosed-string.hoc'
+        'name': 'string.quoted.single.single-line.raw.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'begin': '([uU])(\')'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.string.hoc'
+          '2':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted unicode string'
+        'end': '(\')|(\\n)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'invalid.illegal.unclosed-string.hoc'
+        'name': 'string.quoted.single.single-line.unicode.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_unicode_char'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'begin': '(\'\'\')(?=\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER))'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted string'
+        'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.single.hoc'
+        'name': 'string.quoted.single.block.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+          {
+            'include': 'source.sql'
+          }
+        ]
+      }
+      {
+        'begin': '(\')(?=\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER))'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted string'
+        'end': '(\')|(\\n)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'invalid.illegal.unclosed-string.hoc'
+        'name': 'string.quoted.single.single-line.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+          {
+            'include': 'source.sql'
+          }
+        ]
+      }
+      {
+        'begin': '(\'\'\')'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted string'
+        'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'meta.empty-string.single.hoc'
+        'name': 'string.quoted.single.block.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+      {
+        'begin': '(\')'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.string.begin.hoc'
+        'comment': 'single quoted string'
+        'end': '(\')|(\\n)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.hoc'
+          '2':
+            'name': 'invalid.illegal.unclosed-string.hoc'
+        'name': 'string.quoted.single.single-line.hoc'
+        'patterns': [
+          {
+            'include': '#constant_placeholder'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+    ]
+  'strings':
+    'patterns': [
+      {
+        'include': '#string_quoted_double'
+      }
+      {
+        'include': '#string_quoted_single'
+      }
+    ]

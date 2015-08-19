@@ -1,0 +1,21 @@
+{
+  "name": "language-hoc",
+  "version": "0.1.0",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "description": "Hoc language support in Atom",
+  "homepage": "https://github.com/ComputationalPhysics/language-hoc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ComputationalPhysics/language-hoc"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ComputationalPhysics/language-hoc/issues"
+  },
+  "devDependencies": {
+    "coffeelint": "^1.10.1"
+  }
+}
