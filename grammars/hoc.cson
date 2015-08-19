@@ -48,7 +48,7 @@
     'include': '#comments'
   }
   {
-    'match': '\\b(break|case|continue|default|do|else|for|forall|forsec|access|create|connect|insert|uninsert|all|objref|proc|help|stop|delete|read|debug|em|eqn|iterator|numarg|argtype|func|obfunc|goto|if|_Pragma|return|switch|while)\\b'
+    'match': '\\b(break|case|continue|default|do|else|for|forall|forsec|access|create|connect|insert|uninsert|all|objref|new|proc|help|stop|delete|read|debug|em|eqn|iterator|numarg|argtype|func|obfunc|goto|if|_Pragma|return|switch|while)\\b'
     'name': 'keyword.hocontrol.hoc'
   }
   {
