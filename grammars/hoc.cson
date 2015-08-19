@@ -26,15 +26,15 @@
   {
     'include': '#c_function_call'
   }
-  {
-    'captures':
-      '1':
-        'name': 'variable.other.hoc'
-      '2':
-        'name': 'punctuation.definition.parameters.hoc'
-    'match': '(?x)\n\t\t\t        (?x)\n\t\t\t(?:  \n\t\t\t     (?: (?= \\s )           (?<!else|new|return) (?<=\\w)\\s+      #  or word + space before name\n\t\t\t     )\n\t\t\t)\n\t\t\t(\n\t\t\t\t(?: [A-Za-z_][A-Za-z0-9_]*+ | :: )++    |              # actual name\n\t\t\t\t(?: (?<=operator) (?: [-*&<>=+!]+ | \\(\\) | \\[\\] ) )  # if it is a C++ operator\n\t\t\t)\n\t\t\t \\s*(\\()'
-    'name': 'meta.initialization.hoc'
-  }
+  # {
+  #   'captures':
+  #     '1':
+  #       'name': 'variable.other.hoc'
+  #     '2':
+  #       'name': 'punctuation.definition.parameters.hoc'
+  #   'match': '(?x)\n\t\t\t        (?x)\n\t\t\t(?:  \n\t\t\t     (?: (?= \\s )           (?<!else|new|return) (?<=\\w)\\s+      #  or word + space before name\n\t\t\t     )\n\t\t\t)\n\t\t\t(\n\t\t\t\t(?: [A-Za-z_][A-Za-z0-9_]*+ | :: )++    |              # actual name\n\t\t\t\t(?: (?<=operator) (?: [-*&<>=+!]+ | \\(\\) | \\[\\] ) )  # if it is a C++ operator\n\t\t\t)\n\t\t\t \\s*(\\()'
+  #   'name': 'meta.initialization.hoc'
+  # }
   {
     'include': '#preprocessor-rule-enabled'
   }
@@ -48,7 +48,7 @@
     'include': '#comments'
   }
   {
-    'match': '\\b(break|case|continue|default|do|else|for|forall|forsec|access|insert|all|objref|proc|goto|if|_Pragma|return|switch|while)\\b'
+    'match': '\\b(break|case|continue|default|do|else|for|forall|forsec|access|create|connect|insert|uninsert|all|objref|proc|help|stop|delete|read|debug|em|eqn|iterator|numarg|argtype|func|obfunc|goto|if|_Pragma|return|switch|while)\\b'
     'name': 'keyword.hocontrol.hoc'
   }
   {
@@ -56,22 +56,26 @@
     'name': 'storage.type.hoc'
   }
   {
-    'match': '\\b(const|extern|register|restrict|static|volatile|inline)\\b'
+    'match': '\\b(local|depvar|localobj|strdef|setpointer|const|extern|register|restrict|static|volatile|inline)\\b'
     'name': 'storage.modifier.hoc'
   }
   {
-    'comment': 'common C constant naming idiom -- kConstantVariable'
-    'match': '\\bk[A-Z]\\w*\\b'
-    'name': 'constant.other.variable.mac-classic.hoc'
+    'match': '\\b(hh|pas|setdata|capacitance|fastpas|extracellular|AlphaSynapse|APCount|Exp2Syn|ExpSyn|IClamp|IntFire1|IntFire2|IntFire4|NetStim|pnt|SEClamp|VClamp)\\b'
+    'name': 'support.variable.magic.hoc'
   }
-  {
-    'match': '\\bg[A-Z]\\w*\\b'
-    'name': 'variable.other.readwrite.global.mac-classic.hoc'
-  }
-  {
-    'match': '\\bs[A-Z]\\w*\\b'
-    'name': 'variable.other.readwrite.static.mac-classic.hoc'
-  }
+  # {
+  #   'comment': 'common C constant naming idiom -- kConstantVariable'
+  #   'match': '\\bk[A-Z]\\w*\\b'
+  #   'name': 'constant.other.variable.mac-classic.hoc'
+  # }
+  # {
+  #   'match': '\\bg[A-Z]\\w*\\b'
+  #   'name': 'variable.other.readwrite.global.mac-classic.hoc'
+  # }
+  # {
+  #   'match': '\\bs[A-Z]\\w*\\b'
+  #   'name': 'variable.other.readwrite.static.mac-classic.hoc'
+  # }
   {
     'match': '\\b(NULL|true|false|TRUE|FALSE)\\b'
     'name': 'constant.language.hoc'
@@ -257,7 +261,7 @@
         'name': 'entity.name.function.hoc'
       '4':
         'name': 'punctuation.definition.parameters.hoc'
-    'end': '(?<=\\})|(?=#)|(;)'
+    'end': '(?<=\\})|(?=#)|(;)|($)|(,)'
     'name': 'meta.function.hoc'
     'patterns': [
       {
