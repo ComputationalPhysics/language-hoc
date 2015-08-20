@@ -322,7 +322,7 @@
       }
     ]
   'builtin_functions':
-    'match': '\\s*\\b(load_file|SectionList|PointProcessGroupManager|subtree|List|distance|remove|append|set|MechanismStandard|select|execute|mnews|object_pop|doNotify|map|Shape|size|view|xpanel|xvalue|save_name|addexpr|Graph|PlotShape|variable|xbutton|AlphaSynapse|APCount|Exp2Syn|ExpSyn|IClamp|IntFire1|IntFire2|IntFire4|NetStim|pnt|SEClamp|VClamp)\\b'
+    'match': '\\s*\\b(pt3dadd|pt3dclear|pt3dstyle|load_file|SectionList|PointProcessGroupManager|subtree|List|distance|remove|append|set|MechanismStandard|select|execute|mnews|object_pop|doNotify|map|Shape|size|view|xpanel|xvalue|save_name|addexpr|Graph|PlotShape|variable|xbutton|AlphaSynapse|APCount|Exp2Syn|ExpSyn|IClamp|IntFire1|IntFire2|IntFire4|NetStim|pnt|SEClamp|VClamp)\\b'
     'name': 'support.function.builtin.hoc'
   'c_function_call':
     'captures':
