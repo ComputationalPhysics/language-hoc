@@ -16,6 +16,25 @@
     'include': '#preprocessor-rule-other-block'
   }
   {
+    'match': '\\b(break|case|continue|default|do|else|for|forall|forsec|access|create|connect|insert|uninsert|all|objref|new|proc|help|stop|delete|read|debug|em|eqn|iterator|numarg|argtype|func|obfunc|goto|if|_Pragma|return|switch|while)\\b'
+    'name': 'keyword.control.hoc'
+  }
+  {
+    'match': '\\b(asm|__asm__|auto|bool|_Bool|char|_Complex|double|enum|float|_Imaginary|int|long|short|signed|struct|typedef|union|unsigned|void)\\b'
+    'name': 'storage.type.hoc'
+  }
+  {
+    'match': '\\b(local|depvar|localobj|strdef|setpointer|const|extern|register|restrict|static|volatile|inline)\\b'
+    'name': 'storage.modifier.hoc'
+  }
+  {
+    'match': '\\b(hh|pas|setdata|capacitance|fastpas|extracellular)\\b'
+    'name': 'support.variable.magic.hoc'
+  }
+  {
+    'include': '#builtin_functions'
+  }
+  {
     'include': '#sizeof'
   }
   {
@@ -47,22 +66,6 @@
   }
   {
     'include': '#comments'
-  }
-  {
-    'match': '\\b(break|case|continue|default|do|else|for|forall|forsec|access|create|connect|insert|uninsert|all|objref|new|proc|help|stop|delete|read|debug|em|eqn|iterator|numarg|argtype|func|obfunc|goto|if|_Pragma|return|switch|while)\\b'
-    'name': 'keyword.control.hoc'
-  }
-  {
-    'match': '\\b(asm|__asm__|auto|bool|_Bool|char|_Complex|double|enum|float|_Imaginary|int|long|short|signed|struct|typedef|union|unsigned|void)\\b'
-    'name': 'storage.type.hoc'
-  }
-  {
-    'match': '\\b(local|depvar|localobj|strdef|setpointer|const|extern|register|restrict|static|volatile|inline)\\b'
-    'name': 'storage.modifier.hoc'
-  }
-  {
-    'match': '\\b(hh|pas|setdata|capacitance|fastpas|extracellular|AlphaSynapse|APCount|Exp2Syn|ExpSyn|IClamp|IntFire1|IntFire2|IntFire4|NetStim|pnt|SEClamp|VClamp)\\b'
-    'name': 'support.variable.magic.hoc'
   }
   # {
   #   'comment': 'common C constant naming idiom -- kConstantVariable'
@@ -253,33 +256,33 @@
   {
     'include': '#block'
   }
-  {
-    'begin': '(?x)\n    \t\t(?:  ^                                 # begin-of-line\n    \t\t  |  \n    \t\t     (?: (?= \\s )           (?<!else|new|return) (?<=\\w)      #  or word + space before name\n    \t\t       | (?= \\s*[A-Za-z_] ) (?<!&&)       (?<=[*&>])   #  or type modifier before name\n    \t\t     )\n    \t\t)\n    \t\t(\\s*) (?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|[cr]?iterate)\\s*\\()\n    \t\t(\n    \t\t\t(?: [A-Za-z_][A-Za-z0-9_]*+ | :: )++ |                  # actual name\n    \t\t\t(?: (?<=operator) (?: [-*&<>=+!]+ | \\(\\) | \\[\\] ) )  # if it is a C++ operator\n    \t\t)\n    \t\t \\s*(?=\\()'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.whitespace.function.leading.hoc'
-      '3':
-        'name': 'entity.name.function.hoc'
-      '4':
-        'name': 'punctuation.definition.parameters.hoc'
-    'end': '(?<=\\})|(?=#)|(;)|($)|(,)'
-    'name': 'meta.function.hoc'
-    'patterns': [
-      {
-        'include': '#comments'
-      }
-      {
-        'include': '#parens'
-      }
-      {
-        'match': '\\b(const|override|final)\\b'
-        'name': 'storage.modifier.hoc'
-      }
-      {
-        'include': '#block'
-      }
-    ]
-  }
+  # {
+  #   'begin': '(?x)\n    \t\t(?:  ^                                 # begin-of-line\n    \t\t  |  \n    \t\t     (?: (?= \\s )           (?<!else|new|return) (?<=\\w)      #  or word + space before name\n    \t\t       | (?= \\s*[A-Za-z_] ) (?<!&&)       (?<=[*&>])   #  or type modifier before name\n    \t\t     )\n    \t\t)\n    \t\t(\\s*) (?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|[cr]?iterate)\\s*\\()\n    \t\t(\n    \t\t\t(?: [A-Za-z_][A-Za-z0-9_]*+ | :: )++ |                  # actual name\n    \t\t\t(?: (?<=operator) (?: [-*&<>=+!]+ | \\(\\) | \\[\\] ) )  # if it is a C++ operator\n    \t\t)\n    \t\t \\s*(?=\\()'
+  #   'beginCaptures':
+  #     '1':
+  #       'name': 'punctuation.whitespace.function.leading.hoc'
+  #     '3':
+  #       'name': 'entity.name.function.hoc'
+  #     '4':
+  #       'name': 'punctuation.definition.parameters.hoc'
+  #   'end': '(?<=\\})|(?=#)|(;)|($)|(,)'
+  #   'name': 'meta.function.hoc'
+  #   'patterns': [
+  #     {
+  #       'include': '#comments'
+  #     }
+  #     {
+  #       'include': '#parens'
+  #     }
+  #     {
+  #       'match': '\\b(const|override|final)\\b'
+  #       'name': 'storage.modifier.hoc'
+  #     }
+  #     {
+  #       'include': '#block'
+  #     }
+  #   ]
+  # }
 ]
 'repository':
   'access':
@@ -317,6 +320,9 @@
         'include': '$base'
       }
     ]
+  'builtin_functions':
+    'match': '\\s*\\b(load_file|SectionList|PointProcessGroupManager|subtree|List|distance|remove|append|set|MechanismStandard|select|execute|mnews|object_pop|doNotify|map|Shape|size|view|xpanel|xvalue|save_name|addexpr|Graph|PlotShape|variable|xbutton|AlphaSynapse|APCount|Exp2Syn|ExpSyn|IClamp|IntFire1|IntFire2|IntFire4|NetStim|pnt|SEClamp|VClamp)\\b'
+    'name': 'support.function.builtin.hoc'
   'c_function_call':
     'captures':
       '1':
