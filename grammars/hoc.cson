@@ -17,7 +17,7 @@
     'include': '#preprocessor-rule-other-block'
   }
   {
-    'match': '\\b(break|case|continue|default|do|else|for|forall|forsec|access|create|connect|insert|uninsert|all|objref|new|proc|help|stop|delete|read|debug|em|eqn|iterator|numarg|argtype|func|obfunc|goto|if|_Pragma|return|switch|while)\\b'
+    'match': '\\b(break|case|continue|default|do|else|for|forall|forsec|access|create|connect|insert|uninsert|all|objref|objectvar|new|proc|help|stop|delete|read|debug|em|eqn|iterator|numarg|argtype|func|obfunc|goto|if|_Pragma|return|switch|while)\\b'
     'name': 'keyword.control.hoc'
   }
   {
@@ -322,7 +322,7 @@
       }
     ]
   'builtin_functions':
-    'match': '\\s*\\b(pt3dadd|pt3dclear|pt3dstyle|load_file|SectionList|PointProcessGroupManager|subtree|List|distance|remove|append|set|MechanismStandard|select|execute|mnews|object_pop|doNotify|map|Shape|size|view|xpanel|xvalue|save_name|addexpr|Graph|PlotShape|variable|xbutton|AlphaSynapse|APCount|Exp2Syn|ExpSyn|IClamp|IntFire1|IntFire2|IntFire4|NetStim|pnt|SEClamp|VClamp)\\b'
+    'match': '\\s*\\b(IO|hoc_pointer_|numarg|solve|WinExec|ivoc_style|object_id|sprint|allobjects|load_file|object_pop|sscanf|allobjectvars|load_func|object_push|startsw|argtype|load_proc|obsolete|stopsw|chdir|load_template|print_session|stopwatch|checkpoint|machine_name|prmat|strcmp|coredump_on_error|math|pwman_place|symbols|dialogs|mcell_ran4|quit|system|eqinit|mcell_ran4_init|retrieveaudit|units|execerror|name_declared|save_session|unix_mac_pc|execute|neuronhome|saveaudit|use_mcell_ran4|execute1|nrn_load_dll|show_errmess_always|variable_domain|getcwd|nrnversion|show_winio|pt3dadd|pt3dclear|pt3dstyle|object_push|load_file|SectionList|PointProcessGroupManager|subtree|List|distance|remove|append|set|MechanismStandard|select|execute|mnews|object_pop|doNotify|map|Shape|size|view|xpanel|xvalue|save_name|addexpr|Graph|PlotShape|variable|xbutton|AlphaSynapse|APCount|Exp2Syn|ExpSyn|IClamp|IntFire1|IntFire2|IntFire4|NetStim|pnt|SEClamp|VClamp)\\b'
     'name': 'support.function.builtin.hoc'
   'c_function_call':
     'captures':
