@@ -2,6 +2,7 @@
 'fileTypes': [
   'hoc'
   'ses'
+  'cll'
 ]
 'firstLineMatch': '-[*]-( Mode:)? C -[*]-'
 'name': 'C'

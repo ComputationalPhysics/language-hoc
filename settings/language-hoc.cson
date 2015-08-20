@@ -4,6 +4,6 @@
     'softTabs': true
     'tabLength': 4
     'foldEndPattern': '^\\s*\\}\\s*$'
-    'commentStart': '# '
+    'commentStart': '// '
     'increaseIndentPattern': '^\\s*(class|def|elif|else|except|finally|for|if|try|with|while)\\b.*\\{\\s*$'
     'decreaseIndentPattern': '^\\s*\\}\\b.*:'
