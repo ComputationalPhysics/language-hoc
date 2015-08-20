@@ -1,6 +1,7 @@
 'scopeName': 'source.hoc'
 'fileTypes': [
   'hoc'
+  'ses'
 ]
 'firstLineMatch': '-[*]-( Mode:)? C -[*]-'
 'name': 'C'
