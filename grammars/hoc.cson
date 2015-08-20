@@ -4,8 +4,7 @@
   'ses'
   'cll'
 ]
-'firstLineMatch': '-[*]-( Mode:)? C -[*]-'
-'name': 'C'
+'name': 'hoc'
 'patterns': [
   {
     'include': '#preprocessor-rule-enabled-block'
